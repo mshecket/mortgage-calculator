@@ -20,18 +20,27 @@ function App() {
 
     }
 
+    const currencyFormat = (amount) => amount.toLocaleString('en-US',{
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })
+
     return (
         <div>
+            <label id="loanAmountLabel">Loan Amount</label>
             <input type="text" name="loanAmount" id="loanAmount" onChange={handleChange} value={loanAmount}></input>
+            <br/>
+            <label id="termInMonthsLabel">Term In Months</label>
             <input type="text" name="termInMonths" id="termInMonths" onChange={handleChange} value={termInMonths}></input>
+            <br/>
+            <label id="interestRateLabel">Interest Rate</label>
             <input type="text" name="interestRate" id="interestRate" onChange={handleChange} value={interestRate}></input>
+            <br/>
+            <label id="monthlyPaymentLabel">Monthly Payment</label>
             <div id="output">
-                {monthlyPayment(loanAmount,termInMonths,interestRate/100).toLocaleString('en-US',{
-                    style: "currency",
-                    currency: "USD",
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                })}
+                {currencyFormat(monthlyPayment(loanAmount,termInMonths,interestRate/100))}
             </div>
         </div>
     )

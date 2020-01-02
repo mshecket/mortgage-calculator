@@ -1,0 +1,35 @@
+#mainContent {
+    background-color: #ddf;
+    width: 50vw;
+    height: auto;
+    margin: 5vw 10vw 5vw 10vw;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    box-shadow: 10px 11px 17px rgba(0, 0, 0, 0.7);
+    border-radius: 8vw;
+}
+
+#mainContent label {
+    font-size: 2.5vw;
+    margin: 5px auto 5px auto;
+    padding: 2px;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+}
+
+#mainContent input {
+    height: 2.5vw;
+    font-size: 2vw;
+    margin: auto;
+    padding: 2px;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+#output {
+    font-size: 3vw;
+    margin: auto;
+}

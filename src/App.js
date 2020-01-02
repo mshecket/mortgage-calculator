@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import monthlyPayment from "./monthlyPayment"
+import "./App.css"
 
 function App() {
     const [loanAmount, setLoanAmount] = useState(0)
@@ -28,7 +29,7 @@ function App() {
     })
 
     return (
-        <div>
+        <div id="mainContent">
             <label id="loanAmountLabel">Loan Amount</label>
             <input type="text" name="loanAmount" id="loanAmount" onChange={handleChange} value={loanAmount}></input>
             <br/>

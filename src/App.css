@@ -2,8 +2,8 @@
     background-color: #ddf;
     width: 50vw;
     height: auto;
-    margin: 5vw 10vw 5vw 10vw;
-    padding: 2vw;
+    margin: 5vh 10vw 5vh 10vw;
+    padding: 2vh 2vw;
     display: flex;
     flex-direction: column;
     font-family: 'Lato', sans-serif;
@@ -21,8 +21,8 @@
 }
 
 #mainContent input {
-    height: 2.5vw;
-    font-size: 2vw;
+    height: 2.5vh;
+    font-size: 2vh;
     margin: auto;
     padding: 2px;
     background-color: #ddd;
@@ -30,6 +30,6 @@
 }
 
 #output {
-    font-size: 3vw;
+    font-size: 3vh;
     margin: auto;
 }

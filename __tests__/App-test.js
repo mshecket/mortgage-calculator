@@ -72,9 +72,30 @@ test('When loan amount set to $100,000, term set to 360 months, and rate set to 
     expect(component.find('#output').text()).toEqual("$599.55")
 })
 
-test('When load amount set to $500,000, term set to 36 months, and rate set to 50%, output display shows $27,056.96', () => {
+test('When loan amount set to $500,000, term set to 36 months, and rate set to 50%, output display shows $27,056.96', () => {
     component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "500000" }})
     component.find('#termInMonths').simulate("change", { target: { name: "termInMonths", value: "36" }})
     component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "50" }})
     expect(component.find('#output').text()).toEqual("$27,056.96")
+})
+
+test('When loan amount set to "a million bucks", term set to 36 months, and rate set to 50%, output display shows $0.00', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "a million bucks" }})
+    component.find('#termInMonths').simulate("change", { target: { name: "termInMonths", value: "36" }})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "50" }})
+    expect(component.find('#output').text()).toEqual("$0.00")
+})
+
+test('When loan amount set to "a million bucks, meaning $1,000,000", term set to 36 months, and rate set to 50%, output display shows $54,113.91', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "a million bucks, meaning $1,000,000" }})
+    component.find('#termInMonths').simulate("change", { target: { name: "termInMonths", value: "36" }})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "50" }})
+    component.find('#loanAmount').simulate("onblur")
+    expect(component.find('#output').text()).toEqual("$54,113.91")
+})
+
+test('When loan amount set to "a million bucks, meaning $1,000,000", the content of the input field reads "$1,000,000.00', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "a million bucks, meaning $1,000,000" }})
+    component.find('#loanAmount').simulate("onblur")
+    expect(component.find('#loanAmount').props().value).toEqual("$1,000,000.00")
 })

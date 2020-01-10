@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import monthlyPayment from "./monthlyPayment"
-import "./App.css"
+import validateDollarAmount from "./validateDollarAmount"
 
 function App() {
     const [loanAmount, setLoanAmount] = useState(0)
@@ -10,7 +10,7 @@ function App() {
     const handleChange = (event) => {
         switch (event.target.name) {
             case "loanAmount":
-                setLoanAmount(event.target.value)
+                setLoanAmount(validateDollarAmount(event.target.value))
                 break
             case "termInMonths":
                 setTermInMonths(event.target.value)
@@ -31,7 +31,7 @@ function App() {
     return (
         <div id="mainContent">
             <label id="loanAmountLabel">Loan Amount</label>
-            <input type="text" name="loanAmount" id="loanAmount" onChange={handleChange} value={loanAmount}></input>
+            <input type="text" name="loanAmount" id="loanAmount" onChange={handleChange} value={currencyFormat(loanAmount)}></input>
             <br/>
             <label id="termInMonthsLabel">Term In Months</label>
             <input type="text" name="termInMonths" id="termInMonths" onChange={handleChange} value={termInMonths}></input>

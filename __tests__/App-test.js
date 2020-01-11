@@ -48,8 +48,8 @@ test('There is a span with id "monthsOrYearsSelection"', () => {
     expect(component.find('#monthsOrYearsSelection')).toHaveLength(1)
 })
 
-test('The interest rate input has a label with the text "Interest Rate"', () => {
-    expect(component.find('label#interestRateLabel').text()).toEqual("Interest Rate")
+test('The interest rate input has a label with the text "Interest Rate (%)"', () => {
+    expect(component.find('label#interestRateLabel').text()).toEqual("Interest Rate (%)") 
 })
 
 test('The output field has a label with the text "Monthly Payment"', () => {
@@ -113,10 +113,12 @@ test('When loan amount set to "a million bucks, meaning $1,000,000", term set to
     expect(component.find('#output').text()).toEqual("$54,113.91")
 })
 
-test('When loan amount set to "a million bucks, meaning $1,000,000", the content of the input field reads "$1,000,000.00', () => {
+test('When loan amount set to "a million bucks, meaning $1,000,000", term set to "36 months", and rate set to 50%, output display shows $54,113.91', () => {
     component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "a million bucks, meaning $1,000,000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "36 months" }})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "50" }})
     component.find('#loanAmount').simulate("onblur")
-    expect(component.find('#loanAmount').props().value).toEqual("$1,000,000.00")
+    expect(component.find('#output').text()).toEqual("$54,113.91")
 })
 
 test('When loan amount set to $1, term set to 1 year, and rate set to 0% interest, output display shows $0.08', () => {
@@ -135,10 +137,58 @@ test('When loan amount set to $100, term set to 100 years, and rate set to 0% in
     expect(component.find('#output').text()).toEqual("$0.08")
 })
 
-test('When loan amount set to $100,000, term set to 30 years, and rate set to 5% interest, output display shows $0.08', () => {
-        component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
-        component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "30" }})
-        component.find('#monthsOrYears').simulate("change", { target: { name: "monthsOrYears", value: true}})
-        component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "5" }})
-        expect(component.find('#output').text()).toEqual("$536.82")
+test('When loan amount set to $100,000, term set to 30 years, and rate set to 5% interest, output display shows $536.82', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "30" }})
+    component.find('#monthsOrYears').simulate("change", { target: { name: "monthsOrYears", value: true}})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "5" }})
+    expect(component.find('#output').text()).toEqual("$536.82")
+})
+
+test('When loan amount set to $100,000, term set to 30.00 years, and rate set to 5% interest, output display shows $536.82', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "30.00" }})
+    component.find('#monthsOrYears').simulate("change", { target: { name: "monthsOrYears", value: true}})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "5" }})
+    expect(component.find('#output').text()).toEqual("$536.82")
+})
+
+test('When loan amount set to $100,000, term set to "^^30.00" years, and rate set to 5% interest, output display shows $536.82', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "^^30.00" }})
+    component.find('#monthsOrYears').simulate("change", { target: { name: "monthsOrYears", value: true}})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "5" }})
+    expect(component.find('#output').text()).toEqual("$536.82")
+})
+
+
+test('When loan amount set to $100,000, term set to "thirty" years, and rate set to 5% interest, output display shows $536.82', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "thirty" }})
+    component.find('#monthsOrYears').simulate("change", { target: { name: "monthsOrYears", value: true}})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "5" }})
+    expect(component.find('#output').text()).toEqual("$8,560.75")
+})
+
+test('When loan amount set to $100,000, term set to "360 months", and rate set to 5% interest, output display shows $536.82', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "360 months" }})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "5" }})
+    expect(component.find('#output').text()).toEqual("$536.82")
+})
+
+test('When loan amount set to $100,000, term set to 30 years, and rate set to "5.00%" interest, output display shows $536.82', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "30" }})
+    component.find('#monthsOrYears').simulate("change", { target: { name: "monthsOrYears", value: true}})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "5.00%" }})
+    expect(component.find('#output').text()).toEqual("$536.82")
+})
+
+test('When loan amount set to $100,000, term set to 30 years, and rate set to "4.9999 percent" interest, output display shows $536.82', () => {
+    component.find('#loanAmount').simulate("change", { target: {  name: "loanAmount", value: "100000" }})
+    component.find('#loanTerm').simulate("change", { target: { name: "loanTerm", value: "30" }})
+    component.find('#monthsOrYears').simulate("change", { target: { name: "monthsOrYears", value: true}})
+    component.find('#interestRate').simulate("change", { target: { name: "interestRate", value: "4.9999 percent" }})
+    expect(component.find('#output').text()).toEqual("$536.82")
 })

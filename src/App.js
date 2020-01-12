@@ -18,7 +18,7 @@ function App() {
                 break
             case "loanTerm":
                 setLoanTerm(event.target.value)
-                if (event.target.value.toLowerCase().includes("m"))
+                if (event.target.value.toLowerCase().includes("m")) // Not currently active due to input validation
                     setMonthsOrYears(false)
                 else if (event.target.value.toLowerCase().includes("y"))
                     setMonthsOrYears(true)
@@ -47,11 +47,14 @@ function App() {
         <div id="mainContent">
             <label id="loanAmountLabel">Loan Amount</label>
             <input
-            type="text"
-            name="loanAmount"
-            id="loanAmount"
-            onChange={handleChange}
-            value={loanAmount}></input>
+                type="number"
+                min="0"
+                max="1000000000000"
+                name="loanAmount"
+                id="loanAmount"
+                onChange={handleChange}
+                value={loanAmount}>
+            </input>
             <br/>
             <label id="loanTermLabel">Loan Term</label>
             <span id="monthsOrYearsSelection">
@@ -66,10 +69,27 @@ function App() {
                 </Switch>
                 <label id="yearsLabel" style={{ color: monthsOrYears ? "white" : "#999"}}>Years</label>
             </span>
-            <input type="text" name="loanTerm" id="loanTerm" onChange={handleChange} placeholder="1 year" value={loanTerm}></input>
+            <input
+                type="number"
+                min="1"
+                max="1000000000"
+                step="1"
+                name="loanTerm"
+                id="loanTerm"
+                onChange={handleChange}
+                value={loanTerm}>
+            </input>
             <br/>
             <label id="interestRateLabel">Interest Rate (%)</label>
-            <input type="text" name="interestRate" id="interestRate" onChange={handleChange} value={interestRate}></input>
+            <input
+                type="number"
+                min="0"
+                max="10000"
+                name="interestRate"
+                id="interestRate"
+                onChange={handleChange}
+                value={interestRate}>
+            </input>
             <br/>
             <label id="monthlyPaymentLabel">Monthly Payment</label>
             <div id="output">

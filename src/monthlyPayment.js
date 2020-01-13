@@ -3,7 +3,7 @@
  */
 
 function monthlyPayment(loanAmount,termInMonths,interestRate) {
-    if (interestRate == 0) {
+    if (interestRate === 0) {
         return loanAmount / termInMonths
     }
     const monthlyInterestRate = interestRate / 12

@@ -32,11 +32,11 @@ test('There is a div with id "output"', () => {
 })
 
 test('The loan amount input has a label with the text "Loan Amount"', () => {
-    expect(component.find('label#loanAmountLabel').text()).toEqual("Loan Amount")
+    expect(component.find('label#loanAmountLabel').text()).toEqual(expect.stringContaining("Loan Amount"))
 })
 
 test('The loan term input has a label with the text "Loan Term"', () => {
-    expect(component.find('label#loanTermLabel').text()).toEqual("Loan Term")
+    expect(component.find('label#loanTermLabel').text()).toEqual(expect.stringContaining("Loan Term"))
 })
 
 test('The months/years switch has two labels with the text "Months" and "Years"', () => {
@@ -49,11 +49,23 @@ test('There is a span with id "monthsOrYearsSelection"', () => {
 })
 
 test('The interest rate input has a label with the text "Interest Rate (%)"', () => {
-    expect(component.find('label#interestRateLabel').text()).toEqual("Interest Rate (%)") 
+    expect(component.find('label#interestRateLabel').text()).toEqual(expect.stringContaining("Interest Rate"))
 })
 
 test('The output field has a label with the text "Monthly Payment"', () => {
     expect(component.find('label#monthlyPaymentLabel').text()).toEqual("Monthly Payment")
+})
+
+test('There is a FontAwesomeIcon with ID "house"', () => {
+    expect(component.find('FontAwesomeIcon#house')).toHaveLength(1)
+})
+
+test('There is a FontAwesomeIcon with ID "calendar"', () => {
+    expect(component.find('FontAwesomeIcon#calendar')).toHaveLength(1)
+})
+
+test('There is a FontAwesomeIcon with ID "percent"', () => {
+    expect(component.find('FontAwesomeIcon#percent')).toHaveLength(1)
 })
 
 test('When loan amount set to $0, term set to 360 months, and rate set to 6% interest, output display shows $0.00', () => {

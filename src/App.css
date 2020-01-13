@@ -1,8 +1,8 @@
 #mainContent {
-    background-color: #348;
+    background-color: #79a;
     color: #fff;
-    margin: 2vh 2vw;
-    padding: .5vh .5vw;
+    margin: 8vh 15vw;
+    padding: 1vh 1vw;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -37,11 +37,17 @@
 #monthsOrYearsSelection {
     display:table;
     margin:0 auto;
+    justify-content: center;
+    align-content: center;
 }
 
 #monthsOrYearsSelection label {
-    font-size: 4vh;
+    font-size: 3vh;
     margin: 5px auto 5px auto;
     padding: 1px;
     transition: color 300ms linear;
+}
+
+.icon {
+    transition: transform .5s ease-in-out;
 }

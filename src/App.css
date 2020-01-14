@@ -23,14 +23,16 @@
     height: 6vh;
     width: 10em;
     font-size: 3.5vh;
-    margin: auto;
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
     padding: .5vh .5vw;
-    background-color: #ddd;
+    background-color: #eee;
     border-radius: 10px;
 }
 
 #output {
-    font-size: 10vh;
+    font-size: 8vh;
     margin: auto;
 }
 
@@ -41,13 +43,19 @@
     align-content: center;
 }
 
+label:hover {
+    text-shadow: 0 0 1.5vmin #dd7;
+    transition: all 0.4s ease-in-out;
+}
+
 #monthsOrYearsSelection label {
     font-size: 3vh;
     margin: 5px auto 5px auto;
     padding: 1px;
-    transition: color 300ms linear;
+    transition: color 300ms ease-in-out;
 }
 
 .icon {
     transition: transform .5s ease-in-out;
+    color: rgb(13, 18, 85);
 }

@@ -18,7 +18,7 @@
   "scripts": {
     "test": "jest",
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "run-script build"
   },
   "devDependencies": {
     "enzyme": "^3.11.0",

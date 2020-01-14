@@ -35,13 +35,21 @@ function App() {
                 setMonthsOrYears(event.target.value)
                 break
             default:
-                console.log("No match for event")
+                break
         }
 
     }
 
     const handleSwitch = (event) => {
         setMonthsOrYears(!monthsOrYears)
+    }
+
+    const handleMonths = (event) => {
+        setMonthsOrYears(false)
+    }
+
+    const handleYears = (event) => {
+        setMonthsOrYears(true)
     }
 
     const currencyFormat = (amount) => amount.toLocaleString('en-US',{
@@ -53,11 +61,14 @@ function App() {
 
     return (
         <div id="mainContent">
-            <label id="loanAmountLabel">Loan Amount  <FontAwesomeIcon
+            <label id="loanAmountLabel" for="loanAmount">Loan Amount   <FontAwesomeIcon
                 id="house"
                 className="icon"
                 icon={faHome}
-                style={{transform: 'scale(' + Math.min(1.2,Math.max(.5,Math.log(loanAmount / 100000))) + ')'}}/>
+                style={{transform: 'scale(' + Math.min(1.25,Math.max(.4,
+                Math.pow(Math.log(loanAmount === 0 ? 1 : loanAmount)/12.0,1.75)
+                )
+                ) + ')'}}/>
             </label>
             <input
                 type="number"
@@ -69,14 +80,23 @@ function App() {
                 value={loanAmount}>
             </input>
             <br/>
-            <label id="loanTermLabel">Loan Term  <FontAwesomeIcon
+            <label id="loanTermLabel" for="loanTerm">Loan Term   <FontAwesomeIcon
                 id="calendar"
                 className="icon"
                 icon={monthsOrYears ? faCalendar : faCalendarAlt}
-                style={{transform: 'scale(' + Math.min(1.2,Math.max(.5,Math.log(monthsOrYears ? (validateLoanTerm(loanTerm) * 12) / 180 : validateLoanTerm(loanTerm) / 10))) + ')'}}/>
+                style={{transform: 'scale(' +
+                Math.min(1.25,
+                    Math.max(.4,
+                        Math.pow(
+                        (Math.log(1 + (monthsOrYears ? validateLoanTerm(loanTerm) : validateLoanTerm(loanTerm) / 12)))
+                        /3.434,
+                        1.5)
+                    )
+                )
+                + ')'}}/>
             </label>
             <span id="monthsOrYearsSelection">
-                <label id="monthsLabel" style={{ color: monthsOrYears ? "#aaa" : "white"}}>Months</label>
+                <label id="monthsLabel" onClick={handleMonths} style={{ color: monthsOrYears ? "#aaa" : "white"}}>Months</label>
                 <Switch id="monthsOrYears"
                     onClick={handleSwitch}
                     onChange={handleChange} // This is just for testing purposes
@@ -84,7 +104,7 @@ function App() {
                     value={monthsOrYears}
                     color="primary">
                 </Switch>
-                <label id="yearsLabel" style={{ color: monthsOrYears ? "white" : "#aaa"}}>Years</label>
+                <label id="yearsLabel" onClick={handleYears} style={{ color: monthsOrYears ? "white" : "#aaa"}}>Years</label>
             </span>
             <input
                 type="number"
@@ -97,16 +117,22 @@ function App() {
                 value={loanTerm}>
             </input>
             <br/>
-            <label id="interestRateLabel">Interest Rate  <FontAwesomeIcon
+            <label id="interestRateLabel" for="interestRate">Interest Rate   <FontAwesomeIcon
                 id="percent"
                 className="icon"
                 icon={faPercentage}
-                style={{transform: 'scale(' + Math.min(1.2,Math.max(.5,Math.log(interestRate / 2.5))) + ')'}}/>
+                style={{transform: 'scale(' +
+                Math.min(1.25,
+                    Math.max(.4,
+                            Math.log(interestRate === 0 ? 1 : 1 + interestRate / 3.5)
+                            )
+                        )
+                + ')'}}/>
             </label>
             <input
                 type="number"
                 min="0"
-                max="10000"
+                max="100"
                 name="interestRate"
                 id="interestRate"
                 onChange={handleChange}

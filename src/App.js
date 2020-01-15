@@ -65,8 +65,8 @@ function App() {
                 id="house"
                 className="icon"
                 icon={faHome}
-                style={{transform: 'scale(' + Math.min(1.25,Math.max(.4,
-                Math.pow(Math.log(loanAmount === 0 ? 1 : loanAmount)/12.0,1.75)
+                style={{transform: 'scale(' + Math.min(1.25,Math.max(.5,
+                Math.pow(Math.log(loanAmount == 0 ? 1 : loanAmount)/12.0,1.75)
                 )
                 ) + ')'}}/>
             </label>
@@ -86,7 +86,7 @@ function App() {
                 icon={monthsOrYears ? faCalendar : faCalendarAlt}
                 style={{transform: 'scale(' +
                 Math.min(1.25,
-                    Math.max(.4,
+                    Math.max(.5,
                         Math.pow(
                         (Math.log(1 + (monthsOrYears ? validateLoanTerm(loanTerm) : validateLoanTerm(loanTerm) / 12)))
                         /3.434,
@@ -123,8 +123,8 @@ function App() {
                 icon={faPercentage}
                 style={{transform: 'scale(' +
                 Math.min(1.25,
-                    Math.max(.4,
-                            Math.log(interestRate === 0 ? 1 : 1 + interestRate / 3.5)
+                    Math.max(.5,
+                            Math.log(interestRate == 0 ? 1 : 1 + interestRate / 3.5)
                             )
                         )
                 + ')'}}/>

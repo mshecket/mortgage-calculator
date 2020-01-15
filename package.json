@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
@@ -13,12 +13,13 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "^3.3.0",
-    "react-test-renderer": "^16.12.0"
+    "react-test-renderer": "^16.12.0",
+    "run-script": "^0.1.1"
   },
   "scripts": {
     "test": "jest",
     "start": "react-scripts start",
-    "build": "run-script build"
+    "build": "react-scripts build"
   },
   "devDependencies": {
     "enzyme": "^3.11.0",

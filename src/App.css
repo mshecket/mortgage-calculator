@@ -1,8 +1,8 @@
 #mainContent {
     background-color: #79a;
     color: #fff;
-    margin: 8vh 15vw;
-    padding: 1vh 1vw;
+    margin: 2vmin;
+    padding: 1vmin;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -13,26 +13,26 @@
 }
 
 #mainContent label {
-    font-size: 6vh;
+    font-size: 5vh;
     margin: 15px auto 0px auto;
     padding: 2px;
     font-weight: 500;
 }
 
 #mainContent input {
-    height: 6vh;
+    height: 4vh;
     width: 10em;
     font-size: 3.5vh;
-    margin-top: 1vh;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    padding: .5vh .5vw;
+    padding: 5px;
     background-color: #eee;
     border-radius: 10px;
 }
 
 #output {
-    font-size: 8vh;
+    font-size: 6vh;
     margin: auto;
 }
 
@@ -58,4 +58,5 @@ label:hover {
 .icon {
     transition: transform .5s ease-in-out;
     color: rgb(13, 18, 85);
+    height: 100%;
 }

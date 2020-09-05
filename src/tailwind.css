@@ -1,0 +1,23 @@
+@tailwind base;
+
+@tailwind components;
+
+#mainContent label {
+    @apply text-4xl mx-5 p-1 font-bold;
+}
+
+#mainContent input {
+
+    @apply h-10 w-full mx-2 text-2xl mt-3 p-3 bg-gray-100 text-gray-900 rounded-lg;
+}
+
+#monthsOrYearsSelection label {
+
+    @apply text-xl ml-4 mt-5 p-1 transition-colors duration-300;
+}
+
+.icon {
+    @apply transition-all duration-300 text-blue-800;
+}
+
+@tailwind utilities;

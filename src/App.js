@@ -106,7 +106,7 @@ function App() {
                     0.5,
                     Math.pow(
                       Math.log(
-                        1 + (monthsOrYears ? loanTerm : loanTerm / 12.0)
+                        1.0 + (monthsOrYears ? (loanTerm * 1.0) : loanTerm / 12)
                       ) / 3.434,
                       1.5
                     )

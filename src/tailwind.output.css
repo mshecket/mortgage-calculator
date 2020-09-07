@@ -619,11 +619,15 @@ video {
 }
 
 #mainContent label {
-  font-size: 2.25rem;
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+  font-size: 1.875rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   padding: 0.25rem;
   font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 #mainContent input {

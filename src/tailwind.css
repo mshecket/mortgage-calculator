@@ -3,7 +3,7 @@
 @tailwind components;
 
 #mainContent label {
-    @apply text-4xl mx-5 p-1 font-bold;
+    @apply text-3xl mx-2 p-1 font-bold select-none;
 }
 
 #mainContent input {

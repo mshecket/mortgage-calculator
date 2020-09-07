@@ -70,7 +70,9 @@ function App() {
         id="mainContent"
         className="w-full h-full md:h-auto md:w-auto bg-blue-400 text-blue-100 m-4 p-16 flex flex-col items-center justify-center font-sans md:rounded-lg md:shadow-lg space-y-1"
       >
-          <h1 className="text-5xl font-bold font-sans border-b w-full text-center pb-5">Mortgage Calculator</h1>
+        <h1 className="text-5xl font-bold font-sans border-b w-full text-center pb-5">
+          Mortgage Calculator
+        </h1>
         <div id="entryBoxes" className="flex flex-col md:flex-row md:flex-wrap">
           <div
             id="loanAmountBox"
@@ -90,9 +92,8 @@ function App() {
                       Math.max(
                         0.5,
                         Math.pow(
-                          Math.log(
-                            loanAmount === 0 ? 1 : (loanAmount * 1.0) / 12.0
-                          ),
+                          Math.log(loanAmount === 0 ? 1 : loanAmount * 1.0) /
+                            12.0,
                           1.75
                         )
                       )

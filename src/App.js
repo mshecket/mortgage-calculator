@@ -28,7 +28,7 @@ function App() {
         break;
       case "loanTerm":
         setLoanTerm(
-          Math.min(5000, Math.max(0, Math.abs(parseInt(event.target.value))))
+          Math.min(5000, Math.max(1, Math.abs(parseInt(event.target.value) || 1)))
         );
         break;
       case "interestRate":
@@ -65,18 +65,18 @@ function App() {
     });
 
   return (
-    <div className="flex justify-center items-center bg-gray-200 h-screen">
+    <div className="flex justify-center items-center bg-gray-200 w-screen h-screen sm:w-auto">
       <div
         id="mainContent"
-        className="w-full h-full md:h-auto md:w-auto bg-blue-400 text-blue-100 m-4 p-16 flex flex-col items-center justify-center font-sans md:rounded-lg md:shadow-lg space-y-1"
+        className="bg-blue-400 text-blue-100 sm:m-4 sm:p-8 flex flex-col items-center justify-center font-sans sm:rounded-lg sm:shadow-lg space-y-1"
       >
-        <h1 className="text-5xl font-bold font-sans border-b w-full text-center pb-5">
+        <h1 className="text-2xl font-bold font-sans border-b w-full text-center pb-5">
           Mortgage Calculator
         </h1>
-        <div id="entryBoxes" className="flex flex-col md:flex-row md:flex-wrap">
+        <div id="entryBoxes" className="flex flex-col sm:flex-row">
           <div
             id="loanAmountBox"
-            className="flex flex-col w-full md:w-1/3 h-auto justify-between items-center border-b md:border-r md:border-b-0 p-4"
+            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center border-b sm:border-r sm:border-b-0 p-2"
           >
             <label htmlFor="loanAmount" id="loanAmountLabel">
               Loan Amount{" "}
@@ -114,11 +114,11 @@ function App() {
           </div>
           <div
             id="loanTermBox"
-            className="flex flex-col w-full md:w-1/3 h-auto justify-between items-center border-b md:border-r md:border-b-0 p-4"
+            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center border-b sm:border-r sm:border-b-0 p-2"
           >
-            <label id="loanTermLabel" htmlFor="loanTerm">
-              Loan Term{" "}
-              <FontAwesomeIcon
+            <label id="loanTermLabel" htmlFor="loanTerm"><div className="flex flex-row flex-no-wrap justify-evenly items-center">
+              <div>Loan Term</div>
+              <div><FontAwesomeIcon
                 id="calendar"
                 className="icon"
                 icon={monthsOrYears ? faCalendar : faCalendarAlt}
@@ -142,7 +142,7 @@ function App() {
                     ) +
                     ")",
                 }}
-              />
+              /></div></div>
             </label>
             <div
               id="monthsOrYearsSelection"
@@ -184,7 +184,7 @@ function App() {
           </div>
           <div
             id="interestRateBox"
-            className="flex flex-col w-auto md:w-1/3 h-auto justify-between items-center p-4"
+            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center p-2"
           >
             <label id="interestRateLabel" htmlFor="interestRate">
               Interest Rate{" "}
@@ -223,10 +223,10 @@ function App() {
         </div>
         <div
           id="outputBox"
-          className="flex flex-col w-full justify-center items-center bg-blue-500 rounded-lg p-4 m-4"
+          className="flex flex-col w-full justify-center items-center bg-blue-500 border-blue-600 border-2 rounded-lg p-2 m-2"
         >
           <label id="monthlyPaymentLabel">Monthly Payment</label>
-          <div id="monthlyPaymentOutput" className="text-4xl select-all">
+          <div id="monthlyPaymentOutput" className="text-xl select-all">
             {currencyFormat(
               monthlyPayment(
                 validateDollarAmount(loanAmount),
@@ -240,7 +240,7 @@ function App() {
           <label className="border-t" id="totalPaymentLabel">
             Total Payment
           </label>
-          <div id="totalPaymentOutput" className="text-4xl select-all">
+          <div id="totalPaymentOutput" className="text-xl select-all">
             {currencyFormat(
               (monthsOrYears ? loanTerm * 12 : loanTerm) *
                 monthlyPayment(

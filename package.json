@@ -3,27 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@material-ui/core": "^4.11.0",
     "babel-jest": "^24.9.0",
+    "chokidar-cli": "^2.1.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^7.0.32",
+    "postcss-cli": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
     "react-test-renderer": "^16.13.1",
-    "run-script": "^0.1.1"
+    "run-script": "^0.1.1",
+    "tailwindcss": "^1.8.6"
   },
   "scripts": {
     "test": "jest",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build:tailwind": "tailwind build src/tailwind.pcss -o src/tailwind.output.css",
+    "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' 'src/**/*.pcss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
+    "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
+    "start:react": "react-scripts start",
+    "prebuild": "run-s build:tailwind",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3",
+    "enzyme-adapter-react-16": "^1.15.4",
     "jest": "^24.9.0"
   },
   "browserslist": {

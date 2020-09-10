@@ -28,7 +28,10 @@ function App() {
         break;
       case "loanTerm":
         setLoanTerm(
-          Math.min(5000, Math.max(1, Math.abs(parseInt(event.target.value) || 1)))
+          Math.min(
+            5000,
+            Math.max(1, Math.abs(parseInt(event.target.value) || 1))
+          )
         );
         break;
       case "interestRate":
@@ -65,21 +68,21 @@ function App() {
     });
 
   return (
-    <div className="flex justify-center items-center bg-gray-200 w-screen h-screen sm:w-auto">
+    <div className="flex flex-col justify-center items-center bg-gray-200 w-screen h-screen">
       <div
         id="mainContent"
-        className="bg-blue-400 text-blue-100 sm:m-4 sm:p-8 flex flex-col items-center justify-center font-sans sm:rounded-lg sm:shadow-lg space-y-1"
+        className="bg-blue-400 text-blue-100 flex flex-col items-center justify-center h-full w-full font-sans p-2 sm:space-y-1 sm:rounded-lg sm:shadow-lg sm:w-auto sm:h-auto sm:m-4 sm:p-8"
       >
-        <h1 className="text-2xl font-bold font-sans border-b w-full text-center pb-5">
+        <h1 className="text-xl sm:text-2xl font-bold font-sans border-b w-full text-center pb-3">
           Mortgage Calculator
         </h1>
         <div id="entryBoxes" className="flex flex-col sm:flex-row">
           <div
             id="loanAmountBox"
-            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center border-b sm:border-r sm:border-b-0 p-2"
+            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center border-b py-2 sm:border-r sm:border-b-0 sm:py-2"
           >
             <label htmlFor="loanAmount" id="loanAmountLabel">
-              Loan Amount{" "}
+              Loan Amount&nbsp;&nbsp;
               <FontAwesomeIcon
                 id="house"
                 className="icon"
@@ -114,39 +117,41 @@ function App() {
           </div>
           <div
             id="loanTermBox"
-            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center border-b sm:border-r sm:border-b-0 p-2"
+            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center border-b py-2 sm:border-r sm:border-b-0 sm:py-2"
           >
-            <label id="loanTermLabel" htmlFor="loanTerm"><div className="flex flex-row flex-no-wrap justify-evenly items-center">
-              <div>Loan Term</div>
-              <div><FontAwesomeIcon
-                id="calendar"
-                className="icon"
-                icon={monthsOrYears ? faCalendar : faCalendarAlt}
-                style={{
-                  transform:
-                    "scale(" +
-                    Math.min(
-                      1.25,
-                      Math.max(
-                        0.5,
-                        Math.pow(
-                          Math.log(
-                            1.0 +
-                              (monthsOrYears
-                                ? validateLoanTerm(loanTerm * 1.0)
-                                : validateLoanTerm(loanTerm * 1.0) / 12)
-                          ) / 3.434,
-                          1.5
+            <label id="loanTermLabel" htmlFor="loanTerm">
+              <div className="flex flex-row flex-no-wrap justify-evenly items-center">
+                Loan Term&nbsp;&nbsp;
+                <FontAwesomeIcon
+                  id="calendar"
+                  className="icon"
+                  icon={monthsOrYears ? faCalendar : faCalendarAlt}
+                  style={{
+                    transform:
+                      "scale(" +
+                      Math.min(
+                        1.25,
+                        Math.max(
+                          0.5,
+                          Math.pow(
+                            Math.log(
+                              1.0 +
+                                (monthsOrYears
+                                  ? validateLoanTerm(loanTerm * 1.0)
+                                  : validateLoanTerm(loanTerm * 1.0) / 12)
+                            ) / 3.434,
+                            1.5
+                          )
                         )
-                      )
-                    ) +
-                    ")",
-                }}
-              /></div></div>
+                      ) +
+                      ")",
+                  }}
+                />
+              </div>
             </label>
             <div
               id="monthsOrYearsSelection"
-              className="flex flex-row items-end justify-center w-full"
+              className="flex flex-row items-end justify-center w-full leading-none tracking-tight"
             >
               <label
                 id="monthsLabel"
@@ -184,10 +189,10 @@ function App() {
           </div>
           <div
             id="interestRateBox"
-            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center p-2"
+            className="flex flex-col w-full sm:w-1/3 sm:h-auto justify-between items-center sm:py-2"
           >
             <label id="interestRateLabel" htmlFor="interestRate">
-              Interest Rate{" "}
+              Interest Rate&nbsp;&nbsp;
               <FontAwesomeIcon
                 id="percent"
                 className="icon"
@@ -223,7 +228,7 @@ function App() {
         </div>
         <div
           id="outputBox"
-          className="flex flex-col w-full justify-center items-center bg-blue-500 border-blue-600 border-2 rounded-lg p-2 m-2"
+          className="flex flex-col w-full justify-center items-center bg-blue-500 border-blue-600 border-2 rounded-lg mt-2 sm:p-2 sm:m-2"
         >
           <label id="monthlyPaymentLabel">Monthly Payment</label>
           <div id="monthlyPaymentOutput" className="text-xl select-all">

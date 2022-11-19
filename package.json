@@ -16,7 +16,7 @@
     "postcss-cli": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^5.0.1",
     "react-test-renderer": "^16.13.1",
     "run-script": "^0.1.1",
     "tailwindcss": "^1.8.10"
